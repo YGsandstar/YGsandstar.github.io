@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Preface笔者win10系统是家庭版，所以不能下载 Docker for Windows 直装，所以，如果你是家庭版，也可选择去 tb 买专业版的激活码，不过五块钱的事，当然你面临的问题就得去找专门的 Docker for Windows 的博客来解决，本文并不适用，所以请确认好你是 win10 家庭版的用户，又在 Quickstart 时遇到了一系列问题，那么希望本文会对你有所帮助。 Q&amp;a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Win10 Docker Toolbox安装出现的各种疑难杂症解决方法">
+<meta property="og:url" content="http://yoursite.com/2020/08/14/Docker-Toolbox%E5%AE%89%E8%A3%85%E5%87%BA%E7%8E%B0%E7%9A%84%E5%90%84%E7%A7%8D%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:site_name" content="sandstar">
+<meta property="og:description" content="Preface笔者win10系统是家庭版，所以不能下载 Docker for Windows 直装，所以，如果你是家庭版，也可选择去 tb 买专业版的激活码，不过五块钱的事，当然你面临的问题就得去找专门的 Docker for Windows 的博客来解决，本文并不适用，所以请确认好你是 win10 家庭版的用户，又在 Quickstart 时遇到了一系列问题，那么希望本文会对你有所帮助。 Q&amp;a">
+<meta property="og:locale">
+<meta property="og:image" content="http://yoursite.com/images/image-20200814204958498.png">
+<meta property="og:image" content="http://yoursite.com/images/image-20200814201113052.png">
+<meta property="og:image" content="http://yoursite.com/images/image-20200814202249043.png">
+<meta property="article:published_time" content="2020-08-14T11:49:21.000Z">
+<meta property="article:modified_time" content="2020-08-15T02:30:17.106Z">
+<meta property="article:author" content="sandstar">
+<meta property="article:tag" content="Docker">
+<meta property="article:tag" content="安装教程">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/image-20200814204958498.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Win10 Docker Toolbox安装出现的各种疑难杂症解决方法</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+
+    
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    
+<script src="/lib/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+    <div class="banner">
+<div id="blogtitel" class="blogtitel">sandstar</div>
+<ul id="wrapper" class="wrapper">
+  <div class="sun">
+    <div class="star"></div>
+  </div>
+  <div class="mercury">
+    <div class="planet">
+      <div class="shadow"></div>
+    </div>
+  </div>
+  <div class="venus">
+    <div class="planet">
+      <div class="shadow"></div>
+    </div>
+  </div>
+  <div class="earth">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+  <div class="mars">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+  <div class="jupiter">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+</ul>
+</div>
+
+    <div class="background">
+      
+        <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/YGsandstar">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2020/08/05/SQL%E6%B3%A8%E5%85%A5-bypass-or-stat%E8%BF%87%E6%BB%A4/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/08/14/Docker-Toolbox%E5%AE%89%E8%A3%85%E5%87%BA%E7%8E%B0%E7%9A%84%E5%90%84%E7%A7%8D%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://yoursite.com/2020/08/14/Docker-Toolbox%E5%AE%89%E8%A3%85%E5%87%BA%E7%8E%B0%E7%9A%84%E5%90%84%E7%A7%8D%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/&text=Win10 Docker Toolbox安装出现的各种疑难杂症解决方法"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/08/14/Docker-Toolbox%E5%AE%89%E8%A3%85%E5%87%BA%E7%8E%B0%E7%9A%84%E5%90%84%E7%A7%8D%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/&title=Win10 Docker Toolbox安装出现的各种疑难杂症解决方法"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/08/14/Docker-Toolbox%E5%AE%89%E8%A3%85%E5%87%BA%E7%8E%B0%E7%9A%84%E5%90%84%E7%A7%8D%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/&is_video=false&description=Win10 Docker Toolbox安装出现的各种疑难杂症解决方法"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Win10 Docker Toolbox安装出现的各种疑难杂症解决方法&body=Check out this article: http://yoursite.com/2020/08/14/Docker-Toolbox%E5%AE%89%E8%A3%85%E5%87%BA%E7%8E%B0%E7%9A%84%E5%90%84%E7%A7%8D%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://yoursite.com/2020/08/14/Docker-Toolbox%E5%AE%89%E8%A3%85%E5%87%BA%E7%8E%B0%E7%9A%84%E5%90%84%E7%A7%8D%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/&title=Win10 Docker Toolbox安装出现的各种疑难杂症解决方法"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://yoursite.com/2020/08/14/Docker-Toolbox%E5%AE%89%E8%A3%85%E5%87%BA%E7%8E%B0%E7%9A%84%E5%90%84%E7%A7%8D%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/&title=Win10 Docker Toolbox安装出现的各种疑难杂症解决方法"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/08/14/Docker-Toolbox%E5%AE%89%E8%A3%85%E5%87%BA%E7%8E%B0%E7%9A%84%E5%90%84%E7%A7%8D%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/&title=Win10 Docker Toolbox安装出现的各种疑难杂症解决方法"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://yoursite.com/2020/08/14/Docker-Toolbox%E5%AE%89%E8%A3%85%E5%87%BA%E7%8E%B0%E7%9A%84%E5%90%84%E7%A7%8D%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/&title=Win10 Docker Toolbox安装出现的各种疑难杂症解决方法"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/08/14/Docker-Toolbox%E5%AE%89%E8%A3%85%E5%87%BA%E7%8E%B0%E7%9A%84%E5%90%84%E7%A7%8D%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/&name=Win10 Docker Toolbox安装出现的各种疑难杂症解决方法&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Preface"><span class="toc-number">1.</span> <span class="toc-text">Preface</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Q-amp-A"><span class="toc-number">2.</span> <span class="toc-text">Q&amp;A</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Q1-bash-exe%E8%B7%AF%E5%BE%84%E4%B8%8D%E5%AF%B9"><span class="toc-number">2.1.</span> <span class="toc-text">Q1 : bash.exe路径不对</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Q2-%E5%90%AF%E5%8A%A8%E9%97%AA%E9%80%80"><span class="toc-number">2.2.</span> <span class="toc-text">Q2 : 启动闪退</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Q3-%E5%90%AF%E7%94%A8%E4%BA%86Hyper-V%E5%AE%89%E8%A3%85Docker-Toolbox"><span class="toc-number">2.3.</span> <span class="toc-text">Q3 : 启用了Hyper-V安装Docker Toolbox</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80"><span class="toc-number">2.3.1.</span> <span class="toc-text">方法一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C"><span class="toc-number">2.3.2.</span> <span class="toc-text">方法二</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Q4-%E5%AE%89%E8%A3%85Boot2Docker%E5%A4%B1%E8%B4%A5"><span class="toc-number">2.4.</span> <span class="toc-text">Q4 : 安装Boot2Docker失败</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference"><span class="toc-number">3.</span> <span class="toc-text">Reference</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+      
+      <div class="content index width mx-auto px2 my4">
+          
+          <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Win10 Docker Toolbox安装出现的各种疑难杂症解决方法
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">sandstar</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2020-08-14T11:49:21.000Z" itemprop="datePublished">2020-08-14</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Docker/" rel="tag">Docker</a>, <a class="tag-link-link" href="/tags/%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" rel="tag">安装教程</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h1><p>笔者win10系统是<u>家庭版</u>，所以不能下载 Docker for Windows 直装，所以，如果你是家庭版，也可选择去 tb 买专业版的激活码，不过五块钱的事，当然你面临的问题就得去找专门的 Docker for Windows 的博客来解决，本文并不适用，所以请确认好你是 win10 家庭版的用户，又在 Quickstart 时遇到了一系列问题，那么希望本文会对你有所帮助。</p>
+<h1 id="Q-amp-A"><a href="#Q-amp-A" class="headerlink" title="Q&amp;A"></a>Q&amp;A</h1><h2 id="Q1-bash-exe路径不对"><a href="#Q1-bash-exe路径不对" class="headerlink" title="Q1 : bash.exe路径不对"></a>Q1 : bash.exe路径不对</h2><p>Quickstart 有如下信息：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">windows 正在查找bash.exe。如果想亲自查找文件，请点击“浏览”。</span><br></pre></td></tr></table></figure>
+
+<p>可能你是这种情况，你安装了 git ，但 Docker Toolbox 里的 bash.exe 路径与你的不一致，这时候右键 Quickstart 快捷方法，选属性，前面的 bash.exe 的路径修改为你的 git 安装目录的 bin 目录下的 bash.exe ，如下：</p>
+<img src="/images/image-20200814204958498.png" alt="image-20200814204958498" style="zoom:80%;" />
+
+<p>再双击即可。</p>
+<h2 id="Q2-启动闪退"><a href="#Q2-启动闪退" class="headerlink" title="Q2 : 启动闪退"></a>Q2 : 启动闪退</h2><p>这样第一见 Q1 ，可能是你的 bash.exe 路径还是错的，注意是 bin 目录下的 bash.exe 。</p>
+<p>第二可能是路径里有中文字样，再检查一下属性里的目标。</p>
+<p>第三使用 docker-machine.exe 创建一个 docker machine ，在 Docker Toolbox 的安装目录下，powershell 执行如下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker-machine.exe create --driver virtualbox --virtualbox-boot2docker-url&#x3D;boot2docker.iso default</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Q3-启用了Hyper-V安装Docker-Toolbox"><a href="#Q3-启用了Hyper-V安装Docker-Toolbox" class="headerlink" title="Q3 : 启用了Hyper-V安装Docker Toolbox"></a>Q3 : 启用了Hyper-V安装Docker Toolbox</h2><h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><p>Quickstart 有如下信息：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Running pre-create checks...</span><br><span class="line">Error with pre-create check: &quot;This computer is running Hyper-V. VirtualBox won&#39;t boot a 64bits VM when Hyper-V is activated. Either use Hyper-V as a driver, or disable the Hyper-V hypervisor. (To skip this check, use --virtualbox-no-vtx-check)&quot;</span><br><span class="line">Looks like something went wrong in step ´Checking if machine default exists´... Press any key to continue...</span><br></pre></td></tr></table></figure>
+
+<p>可能你是这种情况，先安装了 Docker for Windows 按照某教程把 Hyper-V 开启了，因为 win10 家庭版是没有 Hyper-V 的，你可能因为 Docker for Windows 把 Hyper-V 下载了，在结果不对转而安装 Docker Toolbox 时出现了问题，所以请你关闭该功能：</p>
+<img src="\images\image-20200814201113052.png" alt="image-20200814201113052" style="zoom:80%;" />
+
+<p>系统会提示你重启，但如果你重启以后，发现还是报错，可以考虑以管理员身份运行cmd，关掉该功能：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bcdedit &#x2F;set hypervisorlaunchtype off</span><br></pre></td></tr></table></figure>
+
+<p>还是需要你再重启一遍。</p>
+<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><p>方法一是可以解决大部分的，如果还不能解决，请你试一下这个方法：</p>
+<p>打开你的 Docker Toolbox 安装目录，找到目录下的 start.sh</p>
+<img src="\images\image-20200814202249043.png" alt="image-20200814202249043" style="zoom:80%;" />
+
+<p>以管理员身份使用文本编辑器，找到下面的信息：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">STEP&#x3D;&quot;Checking if machine $VM exists&quot;</span><br><span class="line">if [ $VM_EXISTS_CODE -eq 1 ]; then</span><br><span class="line">  &quot;$&#123;DOCKER_MACHINE&#125;&quot; rm -f &quot;$&#123;VM&#125;&quot; &amp;&gt; &#x2F;dev&#x2F;null || :</span><br><span class="line">  rm -rf ~&#x2F;.docker&#x2F;machine&#x2F;machines&#x2F;&quot;$&#123;VM&#125;&quot;</span><br><span class="line">  #set proxy variables if they exists</span><br><span class="line">  if [ &quot;$&#123;HTTP_PROXY&#125;&quot; ]; then</span><br><span class="line">    PROXY_ENV&#x3D;&quot;$PROXY_ENV --engine-env HTTP_PROXY&#x3D;$HTTP_PROXY&quot;</span><br><span class="line">  fi</span><br><span class="line">  if [ &quot;$&#123;HTTPS_PROXY&#125;&quot; ]; then</span><br><span class="line">    PROXY_ENV&#x3D;&quot;$PROXY_ENV --engine-env HTTPS_PROXY&#x3D;$HTTPS_PROXY&quot;</span><br><span class="line">  fi</span><br><span class="line">  if [ &quot;$&#123;NO_PROXY&#125;&quot; ]; then</span><br><span class="line">    PROXY_ENV&#x3D;&quot;$PROXY_ENV --engine-env NO_PROXY&#x3D;$NO_PROXY&quot;</span><br><span class="line">  fi</span><br><span class="line">  &quot;$&#123;DOCKER_MACHINE&#125;&quot; create -d virtualbox $PROXY_ENV &quot;$&#123;VM&#125;&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<p>倒数第二行也就是最后的 fi 闭合的上一句，这里在 create -d 之后加上 –virtualbox-no-vtx-check 改成如下形式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;$&#123;DOCKER_MACHINE&#125;&quot; create -d virtualbox --virtualbox-no-vtx-check $PROXY_ENV &quot;$&#123;VM&#125;&quot;</span><br></pre></td></tr></table></figure>
+
+<p>如果你仍然 Quickstart 出错，那么可能是 Hyper-V 依然没有关好，按照方法一再检查一遍，重启。</p>
+<h2 id="Q4-安装Boot2Docker失败"><a href="#Q4-安装Boot2Docker失败" class="headerlink" title="Q4 : 安装Boot2Docker失败"></a>Q4 : 安装Boot2Docker失败</h2><p>Qucikstart 有如下信息：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">No default Boot2Docker ISO found locally, downloading the latest release</span><br></pre></td></tr></table></figure>
+
+<p>说明出现了网络问题，下载出现错误，这里你可以把 C:\Users\你的用户名.docker\machine\cache  下的 tmp 文件全删了，然后找到你的报错信息中的 github releases 的下载地址，如下（可能有版本差异，以你的报错信息为主）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;github.com&#x2F;boot2docker&#x2F;boot2docker&#x2F;releases&#x2F;download&#x2F;v18.09.1&#x2F;boot2docker.iso</span><br></pre></td></tr></table></figure>
+
+<p> 用迅雷或者 IDM 之类的下载器去下载，当然你有梯子的话可以浏览器直接下载，下载到上面的那个目录，就可以 Quickstart 继续了。</p>
+<p>当然这个问题主要是国内下载 github 实在不稳定，你也可以用下面的网址进行下载，至于码云是不能下载 releases 的，所以建议是用个下载器。</p>
+<p><a target="_blank" rel="noopener" href="https://d.serctl.com/?dl_start">https://d.serctl.com/?dl_start</a></p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/2aa5b05717c6">https://www.jianshu.com/p/2aa5b05717c6</a></p>
+<p><a target="_blank" rel="noopener" href="https://qq52o.me/2475.html">https://qq52o.me/2475.html</a></p>
+
+  </div>
+</article>
+
+
+
+      </div>
+      
+       <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/YGsandstar">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Preface"><span class="toc-number">1.</span> <span class="toc-text">Preface</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Q-amp-A"><span class="toc-number">2.</span> <span class="toc-text">Q&amp;A</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Q1-bash-exe%E8%B7%AF%E5%BE%84%E4%B8%8D%E5%AF%B9"><span class="toc-number">2.1.</span> <span class="toc-text">Q1 : bash.exe路径不对</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Q2-%E5%90%AF%E5%8A%A8%E9%97%AA%E9%80%80"><span class="toc-number">2.2.</span> <span class="toc-text">Q2 : 启动闪退</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Q3-%E5%90%AF%E7%94%A8%E4%BA%86Hyper-V%E5%AE%89%E8%A3%85Docker-Toolbox"><span class="toc-number">2.3.</span> <span class="toc-text">Q3 : 启用了Hyper-V安装Docker Toolbox</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80"><span class="toc-number">2.3.1.</span> <span class="toc-text">方法一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C"><span class="toc-number">2.3.2.</span> <span class="toc-text">方法二</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Q4-%E5%AE%89%E8%A3%85Boot2Docker%E5%A4%B1%E8%B4%A5"><span class="toc-number">2.4.</span> <span class="toc-text">Q4 : 安装Boot2Docker失败</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference"><span class="toc-number">3.</span> <span class="toc-text">Reference</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/08/14/Docker-Toolbox%E5%AE%89%E8%A3%85%E5%87%BA%E7%8E%B0%E7%9A%84%E5%90%84%E7%A7%8D%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://yoursite.com/2020/08/14/Docker-Toolbox%E5%AE%89%E8%A3%85%E5%87%BA%E7%8E%B0%E7%9A%84%E5%90%84%E7%A7%8D%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/&text=Win10 Docker Toolbox安装出现的各种疑难杂症解决方法"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/08/14/Docker-Toolbox%E5%AE%89%E8%A3%85%E5%87%BA%E7%8E%B0%E7%9A%84%E5%90%84%E7%A7%8D%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/&title=Win10 Docker Toolbox安装出现的各种疑难杂症解决方法"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/08/14/Docker-Toolbox%E5%AE%89%E8%A3%85%E5%87%BA%E7%8E%B0%E7%9A%84%E5%90%84%E7%A7%8D%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/&is_video=false&description=Win10 Docker Toolbox安装出现的各种疑难杂症解决方法"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Win10 Docker Toolbox安装出现的各种疑难杂症解决方法&body=Check out this article: http://yoursite.com/2020/08/14/Docker-Toolbox%E5%AE%89%E8%A3%85%E5%87%BA%E7%8E%B0%E7%9A%84%E5%90%84%E7%A7%8D%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://yoursite.com/2020/08/14/Docker-Toolbox%E5%AE%89%E8%A3%85%E5%87%BA%E7%8E%B0%E7%9A%84%E5%90%84%E7%A7%8D%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/&title=Win10 Docker Toolbox安装出现的各种疑难杂症解决方法"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://yoursite.com/2020/08/14/Docker-Toolbox%E5%AE%89%E8%A3%85%E5%87%BA%E7%8E%B0%E7%9A%84%E5%90%84%E7%A7%8D%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/&title=Win10 Docker Toolbox安装出现的各种疑难杂症解决方法"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/08/14/Docker-Toolbox%E5%AE%89%E8%A3%85%E5%87%BA%E7%8E%B0%E7%9A%84%E5%90%84%E7%A7%8D%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/&title=Win10 Docker Toolbox安装出现的各种疑难杂症解决方法"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://yoursite.com/2020/08/14/Docker-Toolbox%E5%AE%89%E8%A3%85%E5%87%BA%E7%8E%B0%E7%9A%84%E5%90%84%E7%A7%8D%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/&title=Win10 Docker Toolbox安装出现的各种疑难杂症解决方法"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/08/14/Docker-Toolbox%E5%AE%89%E8%A3%85%E5%87%BA%E7%8E%B0%E7%9A%84%E5%90%84%E7%A7%8D%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/&name=Win10 Docker Toolbox安装出现的各种疑难杂症解决方法&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+      
+      <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2020 sandstar
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/YGsandstar">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+      
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+
+    </div>
+</body>
+</html>
